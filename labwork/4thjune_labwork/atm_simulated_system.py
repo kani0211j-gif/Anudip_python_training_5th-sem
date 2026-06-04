@@ -1,35 +1,71 @@
+# Initial Account Balance
 balance = 10000
 
+# Repeat until user selects Exit
 while True:
 
-    print("\n1. Check Balance")
+    # Display ATM Menu
+    print("\n========== ATM MENU ==========")
+    print("1. Check Balance")
     print("2. Deposit")
     print("3. Withdraw")
     print("4. Exit")
 
-    choice = int(input("Enter Choice: "))
+    # Accept user choice
+    choice = int(input("Enter Your Choice: "))
 
+    # Check Balance
     if choice == 1:
-        print("Balance =", balance)
+        print("Available Balance: ₹", balance)
 
+    # Deposit Money
     elif choice == 2:
-        amount = int(input("Enter Deposit Amount: "))
-        balance = balance + amount
-        print("Amount Deposited Successfully")
 
-    elif choice == 3:
-        amount = int(input("Enter Withdrawal Amount: "))
+        # Accept deposit amount
+        amount = float(input("Enter Deposit Amount: ₹"))
 
-        if amount <= balance:
-            balance = balance - amount
-            print("Withdrawal Successful")
+        # Validate amount
+        if amount <= 0:
+            print("Invalid Amount! Amount must be positive.")
+
         else:
-            print("Insufficient Balance")
+            balance = balance + amount
+            print("₹", amount, "Deposited Successfully.")
+            print("Updated Balance: ₹", balance)
 
+    # Withdraw Money
+    elif choice == 3:
+
+        # Accept withdrawal amount
+        amount = float(input("Enter Withdrawal Amount: ₹"))
+
+        # Check positive amount
+        if amount <= 0:
+            print("Invalid Amount! Amount must be positive.")
+
+        # ATM dispenses notes in multiples of 100
+        elif amount % 100 != 0:
+            print("Please Enter Amount in Multiples of 100.")
+
+        # Check sufficient balance
+        elif amount > balance:
+            print("Insufficient Balance!")
+
+        # Maintain minimum balance of ₹1000
+        elif balance - amount < 1000:
+            print("Minimum Balance of ₹1000 Must Be Maintained!")
+
+        else:
+            balance = balance - amount
+            print("₹", amount, "Withdrawn Successfully.")
+            print("Remaining Balance: ₹", balance)
+
+    # Exit ATM
     elif choice == 4:
-        print("Thank You")
+        print("Thank You For Using ATM.")
         break
 
+    # Invalid Menu Choice
     else:
-        print("Invalid Choice")
+        print("Invalid Choice! Please Select Between 1 and 4.")
 
