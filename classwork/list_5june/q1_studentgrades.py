@@ -1,4 +1,5 @@
 #creating of list 
+
 marks = [78, 45, 92, 35, 88, 40, 99, 56]
 
 # Empty lists and variables
