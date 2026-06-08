@@ -110,4 +110,18 @@ for score in runs.values():
 print("Players Between 400 and 600 Runs :", count)
 
 #--------------------------------------------------
+#output 
+'''
+Players Scoring More Than 500 Runs :
+Virat
+Rohit
+Gill
+Pant
+Orange Cap Winner : Gill ( 698 )
+Lowest Scorer : Hardik ( 278 )
+Total Tournament Runs : 4657
+Players Scoring Below 400 :
+['Hardik', 'Surya', 'Jadeja']
+Players Between 400 and 600 Runs : 5
+'''
 
