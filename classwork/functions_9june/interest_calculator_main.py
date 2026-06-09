@@ -22,6 +22,7 @@ print("---------------------------------------")
 si = interestcalculator.simple_interest(principal, rate, time)
 #displaying simple interest
 print("Simple Interest : Rs", si)
-
+co = interestcalculator.compound_interest(principal, rate, time)
+print("compound Interest : Rs", co)
 
 
