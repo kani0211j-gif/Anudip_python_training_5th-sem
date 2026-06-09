@@ -61,7 +61,7 @@ print("Occurrences of Python:", python_count)
 # ------------------------------------------------
 
 # 6. Create a list of words having more than 4 characters
-long_words = []
+long_words = [] #empty list initialized by none
 
 for word in word_list:
     if len(word) > 4:
@@ -71,7 +71,7 @@ print("Words Longer Than 4 Characters:", long_words)
 
 # ------------------------------------------------
 # 7. Display all words starting with a vowel
-vowel_words = []
+vowel_words = [] #empty list initialized by none
 
 for word in word_list:
     if word[0].lower() in "aeiou":
