@@ -76,17 +76,20 @@ while True:
     print("10. Above average students")
     print("11. Top 5 performers")
     print("12. Scholarship students")
-    print("13. Exit")
+    print("13. Student Report")
+    print("14. Exit")
 
     choice = int(input("Enter choice: "))
 
     #------------------------------------------------
+    #dislplay all students 
     if choice == 1:
         print("\n--- ALL STUDENTS ---")
         for sid in students:
             print(sid, "->", students[sid])
 
     #------------------------------------------------
+   # Search a student using Student ID.
     elif choice == 2:
         sid = input("Enter Student ID: ")
         if sid in students:
@@ -95,6 +98,7 @@ while True:
             print("Not found")
 
     #------------------------------------------------
+    #to add new student
     elif choice == 3:
         sid = input("Enter new ID: ")
         name = input("Enter name: ")
@@ -103,6 +107,7 @@ while True:
         print("Student added")
 
     #------------------------------------------------
+    #to update marks
     elif choice == 4:
         sid = input("Enter ID: ")
         if sid in students:
@@ -112,6 +117,7 @@ while True:
             print("Not found")
 
     #------------------------------------------------
+    #to remove the student
     elif choice == 5:
         sid = input("Enter ID to delete: ")
         if sid in students:
@@ -121,6 +127,7 @@ while True:
             print("Not found")
 
     #------------------------------------------------
+    #to find highest nd lowest scorer
     elif choice == 6:
         # sample-style loop (no max/min)
         items = list(students.items())
@@ -147,6 +154,7 @@ while True:
         print("Lowest:", lowest_id, students[lowest_id])
 
     #------------------------------------------------
+    #to find class average
     elif choice == 7:
         total = 0
         count = 0
@@ -158,6 +166,7 @@ while True:
         print("Average:", total / count)
 
     #------------------------------------------------
+    #to count no of pass nd fail
     elif choice == 8:
         p = 0
         f = 0
@@ -172,6 +181,7 @@ while True:
         print("Fail:", f)
 
     #------------------------------------------------
+    #grading system for user
     elif choice == 9:
         print("\n--- GRADES ---")
         for sid in students:
@@ -189,6 +199,7 @@ while True:
             print(sid, students[sid]["name"], "=>", g)
 
     #------------------------------------------------
+    #to find above average students
     elif choice == 10:
         total = 0
         count = 0
@@ -205,6 +216,7 @@ while True:
                 print(sid, students[sid])
 
     #------------------------------------------------
+    #to find top 5 performers of the class
     elif choice == 11:
         # manual top 5 (no sorting)
         temp = students.copy()
@@ -235,9 +247,65 @@ while True:
 
     #------------------------------------------------
     elif choice == 13:
-        print("Exiting...")
-        break
 
-    else:
-        print("Invalid choice")
+    # topper and lowest
+        items = list(students.items())
+
+        highest_id = items[0][0]
+        lowest_id = items[0][0]
+
+        highest_marks = items[0][1]["marks"]
+        lowest_marks = items[0][1]["marks"]
+
+        total = 0
+        count = 0
+        p = 0
+        f = 0
+        scholarship = {}
+
+        for sid in students:
+
+            marks = students[sid]["marks"]
+
+            total += marks
+            count += 1
+ 
+            if marks > highest_marks:
+               highest_marks = marks
+               highest_id = sid
+
+            if marks < lowest_marks:
+               lowest_marks = marks
+               lowest_id = sid
+
+            if marks >= 50:
+               p += 1
+            else:
+               f += 1
+
+            if marks > 85:
+               scholarship[sid] = students[sid]
+
+        print("\n========== STUDENT REPORT ==========")
+
+        print("Total Students :", len(students))
+
+        print("Topper :", students[highest_id]["name"])
+        print("Highest Marks :", highest_marks)
+
+        print("Lowest Scorer :", students[lowest_id]["name"])
+        print("Lowest Marks :", lowest_marks)
+
+        print("Class Average :", total / count)
+
+        print("Pass Students :", p)
+        print("Fail Students :", f)
+ 
+        print("Scholarship Students :", len(scholarship))
+
+        print("====================================")
+    #---------------------------------------------------------------
+    elif choice == 14:
+         print("Exiting...")
+         break
 

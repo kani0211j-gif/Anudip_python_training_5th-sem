@@ -76,7 +76,8 @@ while True:
     print("10. Generate a low-stock report")
     print("11. Display products whose sales exceed the average sales")
     print("12. Create a dictionary of products eligible for promotion (sales < 10)")
-    print("13. Exit")
+    print("13. Business Report")
+    print("14. Exit")
     #-----------------------------------------------------------------------------------------
     #to take input from the user
     choice = input("Enter your choice (1-13): ")
@@ -189,10 +190,41 @@ while True:
         for pid in promotion_products:
             print(pid, ":", promotion_products[pid])
     #----------------------------------------------------------------------------------------
-    # to exit the program
     elif choice == '13':
-        print("Exiting the program.")
-        break
-    else:
-        print("Invalid choice. Please enter a number between 1 and 13.")
+
+         low_stock_count = 0
+
+         for pid in products:
+             if products[pid]["stock"] < 5:
+                low_stock_count += 1
+
+         promotion_count = 0
+
+         for pid in products:
+             if products[pid]["sold"] < 10:
+                promotion_count += 1
+         total_value =0
+         
+         for pid in products:
+             total_value += products[pid]["price"] * products[pid]["stock"]
+         total_revenue = 0
+         for pid in products:
+             total_revenue += products[pid]["price"] * products[pid]["sold"]
+         print("Total Revenue Generated:", total_revenue)
+#---------------------------------------------------------------------
+         print("\n========== BUSINESS REPORT ==========")
+
+         print("Total Products :", len(products))
+
+         print("Inventory Value :", total_value)
+
+         print("Total Revenue :", total_revenue)
+         print("Low Stock Products :", low_stock_count)
+
+         print("Promotion Products :", promotion_count)
+
+         print("=====================================") 
+    elif choice == '14':
+         print("Exiting...")
+         break
 
