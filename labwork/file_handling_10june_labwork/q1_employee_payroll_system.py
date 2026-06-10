@@ -1,7 +1,31 @@
-#--------------------------------------------------
+'''Employee Payroll Management System
+Problem Statement
+A company stores employee details in a text file named employees.txt.
+File Format
+EMP101,Anuj,45000
+EMP102,Rahul,52000
+EMP103,Priya,38000
+EMP104,Neha,61000
+EMP105,Amit,29000
+EMP106,Sneha,55000
+EMP107,Karan,47000
+EMP108,Pooja,72000
+EMP109,Rohit,33000
+EMP110,Anjali,68000
+Requirements
+Create a menu-driven program to:
+1. Display all employee records.
+2. Search employee details using Employee ID.
+3. Calculate the average salary.
+4. Find the highest-paid and lowest-paid employee.
+5. Display employees earning above ₹50,000.
+6. Add a new employee record to the file.
+7. Generate salary categories:
+o High (₹60,000 and above)
+o Medium (₹40,000–₹59,999)
+o Low (Below ₹40,000) '''
 # Employee Payroll Management System
 #--------------------------------------------------
-
 # Function to display all employee records
 def display_records():
 
@@ -23,8 +47,6 @@ def display_records():
         line = filev.readline()
 
     filev.close()
-
-
 #--------------------------------------------------
 # Function to search employee
 def search_employee():
@@ -57,8 +79,6 @@ def search_employee():
         print("Employee Not Found")
 
     filev.close()
-
-
 #--------------------------------------------------
 # Function to calculate average salary
 def average_salary():
@@ -82,8 +102,6 @@ def average_salary():
     filev.close()
 
     print("Average Salary :", total / count)
-
-
 #--------------------------------------------------
 # Function for highest and lowest salary
 def highest_lowest_salary():
@@ -115,8 +133,6 @@ def highest_lowest_salary():
 
     print("Highest Paid Employee :", highest)
     print("Lowest Paid Employee  :", lowest)
-
-
 #--------------------------------------------------
 # Function to show employees above 50000
 def above_50000():
@@ -137,8 +153,6 @@ def above_50000():
         line = filev.readline()
 
     filev.close()
-
-
 #--------------------------------------------------
 # Function to add employee
 def add_employee():
@@ -154,8 +168,6 @@ def add_employee():
     filev.close()
 
     print("Employee Added Successfully")
-
-
 #--------------------------------------------------
 # Function for salary categories
 def salary_category():
@@ -186,9 +198,6 @@ def salary_category():
         line = filev.readline()
 
     filev.close()
-
-
-#--------------------------------------------------
 # Main Menu
 #--------------------------------------------------
 
