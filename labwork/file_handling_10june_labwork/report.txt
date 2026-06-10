@@ -1,0 +1,8 @@
+Total Expenses : 6900
+Highest Expense Category : Education
+Lowest Expense Category : Travel
+Categories Spending More Than 800
+Shopping
+Electricity
+Education
+Fuel
