@@ -82,7 +82,6 @@ print("Occupancy Percentage :", occupancy, "%")
 # 5. Store updated parking information
 
 file = open("parking.txt", "w")
-
 for slot in parking_slots:
 
     file.write(slot + "\n")
