@@ -1,4 +1,20 @@
-#------------------------------------------------
+'''Email Validation & Domain Analytics System
+Problem Statement
+An organization has collected 20 email addresses from users.
+Create a program to analyze these email addresses.
+Requirements
+For each email:
+1. Extract username.
+2. Extract domain.
+3. Extract extension.
+4. Count digits in username.
+5. Count special characters.
+6. Check if email is valid:
+o Exactly one '@'
+o Contains '.'
+o No spaces
+7. Display invalid emails.
+8. Count emails belonging to each domain. '''
 # Email Validation & Domain Analytics System
 #------------------------------------------------
 
@@ -134,4 +150,9 @@ print("=========================================")
 for key in domain_count:
 
     print(key, "->", domain_count[key], "users")
-
+#-----------------------------------------------------------------------
+#output will be
+'''gmail.com -> 8 users
+outlook.com -> 5 users
+yahoo.com -> 3 users
+company.in -> 4 users'''
