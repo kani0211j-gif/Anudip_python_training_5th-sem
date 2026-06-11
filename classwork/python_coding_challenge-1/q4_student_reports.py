@@ -26,8 +26,7 @@ if not file: #to check file is open or not
      exit("Error opening the file.")
 
 records = file.readlines()
-if not file: #to check file is open or not
-     exit("Error opening the file.")
+
 #---------------------------------------------
 
 file.close()
