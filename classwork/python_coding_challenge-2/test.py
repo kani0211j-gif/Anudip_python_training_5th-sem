@@ -1,18 +1,19 @@
 ''' Write a program to count the frequency of each character in a given string and store the result in a dictionary.'''
-string = " hello , how are you "
-words = string.split()# to split the words
+# to split the words
 #-----------------------------------------
 # to make a dictionary
-count = 0
-freq = {} # empty dictionary
-list1 = list(words)
-print("list of words :", list1) 
-for ch in list1:
-    if ch in words:
-       count +=1
-    else:
-        count = 1
+string = input("Enter a string: ")
 
-        
+freq = {}
+
+for ch in string:
+    if ch in freq:
+        freq[ch] += 1
+    else:
+        freq[ch] = 1
+
+print("Character Frequency:")
+for key in freq:
+    print(key, ":", freq[key])       
 
 
