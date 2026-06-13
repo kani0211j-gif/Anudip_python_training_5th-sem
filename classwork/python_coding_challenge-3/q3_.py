@@ -31,23 +31,107 @@ Most Frequently Used Coupon:
 SAVE50
 Fraud Report Generated Successfully'''
 #----------------------------------------------------------------------------
-# to count the usage of frequency of each coupons
-coupon_frequency = {}
-filev = open('coupons.txt','r')
-# to check the file-------------------------------------------------------
+#----------------------------------------------------------------------------------
+# open the file
+
+filev = open("coupons.txt","r")
 if not filev:
-    print("file doesnt exist")
-    for line in filev:
-        coupon = line.strip()
-        if coupon in coupon_frequency:
-            coupon_frequency += 1 
-        else:
-            coupon_frequency = 1 
-print("coupon frequency  is : ",coupon_frequency)
-#----------------------------------------------------------------------------
-# to create a set of unique words
-#_----------------------------------------------------------------------
-# to display the most frequently used coupon
+    print("error in opening the file")
+
+content = filev.readlines()
+
+filev.close()
+
+#----------------------------------------------------------------------------------
+# count frequency of each coupon
+
+coupon_freq = {}
+
+for line in content:
+
+    coupon = line.strip()
+
+    if coupon in coupon_freq:
+        coupon_freq[coupon] += 1
+
+    else:
+        coupon_freq[coupon] = 1
+
+print("Coupon Usage Frequency :")
+
+for coupon in coupon_freq:
+    print(coupon,":",coupon_freq[coupon])
+
+#----------------------------------------------------------------------------------
+# identify suspicious coupons (used more than 3 times)
+
+suspicious = []
+
+for coupon in coupon_freq:
+
+    if coupon_freq[coupon] > 3:
+        suspicious.append(coupon)
+
+print("\nSuspicious Coupons :")
+
+for coupon in suspicious:
+    print(coupon)
+
+#----------------------------------------------------------------------------------
+# create set of unique coupons
+
+unique_coupons = set()
+
+for line in content:
+    unique_coupons.add(line.strip())
+
+print("\nUnique Coupons :")
+print(unique_coupons)
+
+#----------------------------------------------------------------------------------
+# find most frequently used coupon
+
+max_coupon = ""
+max_count = 0
+
+for coupon in coupon_freq:
+
+    if coupon_freq[coupon] > max_count:
+        max_count = coupon_freq[coupon]
+        max_coupon = coupon
+
+print("\nMost Frequently Used Coupon :")
+print(max_coupon)
+
+#----------------------------------------------------------------------------------
+# save suspicious coupons in fraud report
+
+filev = open("fraud_report.txt","w")
+
+for coupon in suspicious:
+    filev.write(coupon + "\n")
+
+filev.close()
+
+print("\nFraud Report Generated Successfully")
+#---------------------------------------------------------------------------
+#output will be 
+'''Coupon Usage Frequency :
+SAVE50 : 4
+WELCOME20 : 2
+FESTIVE10 : 2
+NEWUSER : 2
+
+Suspicious Coupons :
+SAVE50
+
+Unique Coupons :
+{'SAVE50', 'FESTIVE10', 'NEWUSER', 'WELCOME20'}
+
+Most Frequently Used Coupon :
+SAVE50
+
+Fraud Report Generated Successfully'''
 
 
 
