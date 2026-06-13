@@ -31,38 +31,106 @@ Users with Successful Logins:
 Accounts Requiring Review:
 None'''
 #--------------------------------------------------------------------------------------
+#--------------------------------------------------------------------------------------
 # to open the file
 filev = open('login_logs.txt','r')
-#to check if file open or not 
+
+# to check if file open or not
 if not filev:
     print("error in opening the file")
+
 content = filev.readlines()
 filev.close()
-#----------------------------------------------------------------------------
-#to check failed nd successful count 
+
+# remove heading
+content = content[1:]
+
+#--------------------------------------------------------------------------------------
+# to check failed and successful count
+
 failed_count = 0
 success_count = 0
+
 for line in content:
-    data = line.split(',')
-    if data[1]=="success":
+    data = line.strip().split(',')
+
+    if data[1] == "Success":
         success_count += 1
     else:
         failed_count += 1
-print("no. of failure : ",failed_count)
-print("no of success count : ", success_count)
-#-------------------------------------------------------------------------
-# user more than 2 failed attempt 
+
+print("Successful Login Attempts :", success_count)
+print("Failed Login Attempts :", failed_count)
+
+#--------------------------------------------------------------------------------------
+# to create failure count dictionary
+
 failure_count = {}
+
 for line in content:
-    data = line.split(',')
-    if data[1]=="failed":
+    data = line.strip().split(',')
+
+    if data[1] == "Failed":
+
         if data[0] in failure_count:
             failure_count[data[0]] += 1
+
         else:
             failure_count[data[0]] = 1
-#--------------------------------------------------------------------------        
-# to create frequency dictionary 
 
+print("\nFailure Count per User :")
+
+for user in failure_count:
+    print(user,":",failure_count[user])
+
+#--------------------------------------------------------------------------------------
+# to create set of successful users
+
+success_users = set()
+
+for line in content:
+    data = line.strip().split(',')
+
+    if data[1] == "Success":
+        success_users.add(data[0])
+
+print("\nUsers with Successful Logins :")
+print(success_users)
+#---------------------------------------------------------------------#--------------------------------------------------------------------------------------
+# users whose accounts should be reviewed
+
+review_users = []
+
+for user in failure_count:
+
+    if failure_count[user] > 2:
+        review_users.append(user)
+
+print("\nAccounts Requiring Review :")
+
+if len(review_users) == 0:
+    print("None")
+
+else:
+    for user in review_users:
+        print(user)
+#---------------------------------------------------------------------------
+#output will be
+'''#output will be
+Successful Login Attempts : 2
+Failed Login Attempts : 7
+
+Failure Count per User :
+rahul : 2
+anuj : 2
+priya : 2
+karan : 1
+
+Users with Successful Logins :
+{'rahul', 'neha'}
+
+Accounts Requiring Review :
+None'''
 
 
 
