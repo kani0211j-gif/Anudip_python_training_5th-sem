@@ -25,7 +25,7 @@ Passenger with Heaviest Baggage:
 P107 (41 kg)
 Passengers Requiring Manual Inspection:
 ['P102', 'P104', 'P107', 'P110']'''
-
+#--------------------------------------------------------------------------
 #---------------------------------------------------------------------------------
 #creating a tuple 
 baggage = (
@@ -40,6 +40,7 @@ baggage = (
  ("P109", 19),
  ("P110", 34)
 )
+#------------------------------------------------------------------
 # to display paseengers above 30 kg
 print("passengers carrying baggage above 30 kg : ")
 for passenger in baggage:
